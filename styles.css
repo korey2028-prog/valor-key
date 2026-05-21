@@ -209,26 +209,50 @@ p {
   color: transparent;
   filter: drop-shadow(0 18px 24px rgba(10, 186, 181, 0.12));
   transition:
-    opacity 1100ms ease,
-    transform 1100ms ease,
-    filter 1100ms ease;
+    opacity 900ms ease,
+    transform 900ms ease,
+    filter 900ms ease;
   will-change: opacity, transform;
 }
 
 .hero-line-two {
-  opacity: 0;
-  transform: translateY(12px);
   filter: drop-shadow(0 20px 26px rgba(248, 170, 190, 0.16));
+}
+
+.hl-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(34px);
+  filter: blur(8px);
+  will-change: opacity, transform, filter;
+}
+
+.hl-letter.hl-space,
+.hero-line .hl-letter:has(+ .hl-letter) {
+  /* keep natural inter-letter spacing */
+}
+
+.hero-line-one .hl-letter {
+  animation: hl-letter-in 920ms cubic-bezier(0.2, 0.65, 0.2, 1) forwards;
+  animation-delay: calc(var(--i) * 38ms + 280ms);
+}
+
+body.hero-swapped .hero-line-two .hl-letter {
+  animation: hl-letter-in 920ms cubic-bezier(0.2, 0.65, 0.2, 1) forwards;
+  animation-delay: calc(var(--i) * 36ms);
+}
+
+@keyframes hl-letter-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 body.hero-swapped .hero-line-one {
   opacity: 0;
-  transform: translateY(-12px);
-}
-
-body.hero-swapped .hero-line-two {
-  opacity: 1;
-  transform: translateY(0);
+  transform: translateY(-14px);
 }
 
 .hero-note {
@@ -237,6 +261,113 @@ body.hero-swapped .hero-line-two {
   color: var(--muted);
   font-size: clamp(1.02rem, 1.6vw, 1.2rem);
   line-height: 1.8;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: hero-note-in 900ms cubic-bezier(0.2, 0.65, 0.2, 1) 1500ms forwards;
+}
+
+@keyframes hero-note-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.eyebrow {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: hero-note-in 700ms cubic-bezier(0.2, 0.65, 0.2, 1) 100ms forwards;
+}
+
+/* Drift letters — ambient floating design layer */
+.drift-letters {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.drift-letter {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+  font-weight: 700;
+  color: rgba(178, 62, 48, 0.1);
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  animation:
+    drift-in 1400ms cubic-bezier(0.2, 0.65, 0.2, 1) var(--delay-in, 1800ms) forwards,
+    drift-float var(--dur, 9s) ease-in-out var(--delay, 0s) infinite alternate;
+}
+
+.drift-letter:nth-child(odd) {
+  color: rgba(10, 186, 181, 0.09);
+}
+
+.drift-letter:nth-child(3n) {
+  color: rgba(143, 103, 223, 0.09);
+}
+
+@keyframes drift-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drift-float {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(8px, -12px) rotate(2.4deg); }
+  100% { transform: translate(-6px, 10px) rotate(-2.2deg); }
+}
+
+/* Scroll reveal — sections fade + slide as they enter viewport */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1000ms cubic-bezier(0.2, 0.65, 0.2, 1),
+    transform 1000ms cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+
+[data-reveal].reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal] .word-card {
+  opacity: 0;
+  transform: translateY(24px) scale(0.97);
+  transition:
+    opacity 760ms cubic-bezier(0.2, 0.65, 0.2, 1),
+    transform 760ms cubic-bezier(0.2, 0.65, 0.2, 1);
+  transition-delay: calc(var(--card-i, 0) * 70ms + 320ms);
+}
+
+[data-reveal].reveal-in .word-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+[data-reveal] .gf-still,
+[data-reveal] .gf-motion {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 900ms cubic-bezier(0.2, 0.65, 0.2, 1),
+    transform 900ms cubic-bezier(0.2, 0.65, 0.2, 1);
+}
+
+[data-reveal] .gf-still { transition-delay: 240ms; }
+[data-reveal] .gf-motion { transition-delay: 420ms; }
+
+[data-reveal].reveal-in .gf-still,
+[data-reveal].reveal-in .gf-motion {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .dictionary {
@@ -570,6 +701,10 @@ body.hero-swapped .hero-line-two {
 
   .mystery-layer::before {
     width: min(80vw, 480px);
+  }
+
+  .drift-letters {
+    display: none;
   }
 
   .gravity-falls {
