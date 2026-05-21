@@ -219,17 +219,17 @@ p {
   filter: drop-shadow(0 20px 26px rgba(248, 170, 190, 0.16));
 }
 
+.hl-inner {
+  display: inline-block;
+  white-space: nowrap;
+}
+
 .hl-letter {
   display: inline-block;
   opacity: 0;
   transform: translateY(34px);
   filter: blur(8px);
   will-change: opacity, transform, filter;
-}
-
-.hl-letter.hl-space,
-.hero-line .hl-letter:has(+ .hl-letter) {
-  /* keep natural inter-letter spacing */
 }
 
 .hero-line-one .hl-letter {

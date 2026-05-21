@@ -4,14 +4,21 @@ function splitHeroLetters() {
     const text = line.textContent.trim();
     line.setAttribute("aria-label", text);
     line.textContent = "";
+    // Wrap letters in a single inner span so the outer .hero-line
+    // (display: grid) sees one child to center, not 20+ grid items
+    // stacking vertically.
+    const inner = document.createElement("span");
+    inner.className = "hl-inner";
     [...text].forEach((char, i) => {
       const span = document.createElement("span");
       span.className = "hl-letter";
+      // Non-breaking space keeps inline-block width for space chars
       span.textContent = char === " " ? " " : char;
       span.style.setProperty("--i", i);
       span.setAttribute("aria-hidden", "true");
-      line.appendChild(span);
+      inner.appendChild(span);
     });
+    line.appendChild(inner);
   });
 }
 
