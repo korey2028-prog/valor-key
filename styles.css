@@ -209,50 +209,39 @@ p {
   color: transparent;
   filter: drop-shadow(0 18px 24px rgba(10, 186, 181, 0.12));
   transition:
-    opacity 900ms ease,
-    transform 900ms ease,
-    filter 900ms ease;
+    opacity 900ms cubic-bezier(0.2, 0.65, 0.2, 1),
+    transform 900ms cubic-bezier(0.2, 0.65, 0.2, 1),
+    filter 900ms cubic-bezier(0.2, 0.65, 0.2, 1);
   will-change: opacity, transform;
 }
 
-.hero-line-two {
-  filter: drop-shadow(0 20px 26px rgba(248, 170, 190, 0.16));
-}
-
-.hl-inner {
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.hl-letter {
-  display: inline-block;
+.hero-line-one {
   opacity: 0;
-  transform: translateY(34px);
-  filter: blur(8px);
-  will-change: opacity, transform, filter;
+  transform: translateY(20px);
+  animation: hero-line-in 1100ms cubic-bezier(0.2, 0.65, 0.2, 1) 200ms forwards;
 }
 
-.hero-line-one .hl-letter {
-  animation: hl-letter-in 920ms cubic-bezier(0.2, 0.65, 0.2, 1) forwards;
-  animation-delay: calc(var(--i) * 38ms + 280ms);
-}
-
-body.hero-swapped .hero-line-two .hl-letter {
-  animation: hl-letter-in 920ms cubic-bezier(0.2, 0.65, 0.2, 1) forwards;
-  animation-delay: calc(var(--i) * 36ms);
-}
-
-@keyframes hl-letter-in {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
+.hero-line-two {
+  opacity: 0;
+  transform: translateY(20px);
+  filter: drop-shadow(0 20px 26px rgba(248, 170, 190, 0.16));
 }
 
 body.hero-swapped .hero-line-one {
   opacity: 0;
-  transform: translateY(-14px);
+  transform: translateY(-16px);
+}
+
+body.hero-swapped .hero-line-two {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes hero-line-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-note {

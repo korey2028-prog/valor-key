@@ -1,36 +1,10 @@
-// Split hero text into per-letter spans for stagger animation
-function splitHeroLetters() {
-  document.querySelectorAll(".hero-line").forEach((line) => {
-    const text = line.textContent.trim();
-    line.setAttribute("aria-label", text);
-    line.textContent = "";
-    // Wrap letters in a single inner span so the outer .hero-line
-    // (display: grid) sees one child to center, not 20+ grid items
-    // stacking vertically.
-    const inner = document.createElement("span");
-    inner.className = "hl-inner";
-    [...text].forEach((char, i) => {
-      const span = document.createElement("span");
-      span.className = "hl-letter";
-      // Non-breaking space keeps inline-block width for space chars
-      span.textContent = char === " " ? " " : char;
-      span.style.setProperty("--i", i);
-      span.setAttribute("aria-hidden", "true");
-      inner.appendChild(span);
-    });
-    line.appendChild(inner);
-  });
-}
-
-splitHeroLetters();
-
-// Index each card so its reveal animation can stagger
+// Index each word card so its reveal animation can stagger
 document.querySelectorAll(".word-grid .word-card").forEach((card, i) => {
   card.style.setProperty("--card-i", i);
 });
 
-// Swap from line 1 to line 2 after the first stagger has played out
-const heroSwapDelay = 2400;
+// Hero: swap line 1 → line 2 with whole-line fade after a beat
+const heroSwapDelay = 2000;
 window.setTimeout(() => {
   document.body.classList.add("hero-swapped");
 }, heroSwapDelay);
