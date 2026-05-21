@@ -3,8 +3,16 @@ document.querySelectorAll(".word-grid .word-card").forEach((card, i) => {
   card.style.setProperty("--card-i", i);
 });
 
-// Hero: swap line 1 → line 2 with whole-line fade after a beat
-const heroSwapDelay = 2000;
+// Hero: trigger line-1 entrance on next frame (double rAF guarantees
+// the browser has committed initial state before the transition fires)
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    document.body.classList.add("hero-loaded");
+  });
+});
+
+// Swap: line 1 fades OUT first, then line 2 fades IN (sequential, not crossfade)
+const heroSwapDelay = 1800;
 window.setTimeout(() => {
   document.body.classList.add("hero-swapped");
 }, heroSwapDelay);
