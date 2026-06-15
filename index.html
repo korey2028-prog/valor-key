@@ -7,7 +7,7 @@
       name="description"
       content="A tiny dictionary for Valentina's Day, made quietly for V."
     />
-    <meta name="theme-color" content="#fffaf2" />
+    <meta name="theme-color" content="#e6fffb" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23fffaf2'/%3E%3Cpath d='M32 50c-8-7-16-12-16-21 0-6 4-10 10-10 3 0 5 1 6 4 1-3 4-4 6-4 6 0 10 4 10 10 0 9-8 14-16 21z' fill='%230ABAB5'/%3E%3C/svg%3E"
@@ -20,11 +20,18 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20260615-liquid-angel" />
   </head>
   <body>
     <div class="mystery-layer" aria-hidden="true">
       <span class="apocalypse-orb"><i></i></span>
+      <span class="angel-halo"></span>
+      <span class="angel-wing">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
     </div>
 
     <div class="drift-letters" aria-hidden="true">
@@ -39,10 +46,19 @@
     <main class="site-shell">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">May 21</p>
+          <p class="eyebrow hero-kicker" aria-live="polite">
+            <span class="hero-kicker__text">
+              <span class="hero-kicker__line hero-kicker__line-one">May 21</span>
+              <span class="hero-kicker__line hero-kicker__line-two">Every day</span>
+            </span>
+          </p>
           <h1 class="hero-title" id="hero-title" aria-live="polite">
             <span class="hero-line hero-line-one">To my angel,</span>
             <span class="hero-line hero-line-two">Happy Valentina's Day.</span>
+            <span class="hero-line hero-line-three hero-line--resolved">
+              <span class="hero-line__row">Happy</span>
+              <span class="hero-line__row hero-line__key">The Valor Key's Day.</span>
+            </span>
           </h1>
           <p class="hero-note">
             A small dictionary for the way a little home started to have its
@@ -59,25 +75,11 @@
 
         <figure class="gf-still">
           <img
-            src="assets/our-place.jpg"
-            alt="us, somewhere in Gravity Falls"
+            src="assets/memory/gravity-falls-moon.jpg"
+            alt="two people sitting together under a Tiffany-blue moon in Gravity Falls"
+            decoding="async"
             loading="lazy"
           />
-        </figure>
-
-        <figure class="gf-motion">
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            controls
-            controlslist="nodownload noremoteplayback"
-            preload="metadata"
-            poster="assets/our-place.jpg"
-          >
-            <source src="assets/our-place.mp4" type="video/mp4" />
-          </video>
           <figcaption>Our parallel universe.</figcaption>
         </figure>
       </section>
@@ -212,6 +214,261 @@
               of the day, quietly saying: you are here with me.
             </span>
           </button>
+
+          <button
+            class="word-card word-card--egg word-card--pair"
+            type="button"
+            aria-expanded="false"
+            data-word="Szeretlek / I love you"
+          >
+            <span class="word-card__tag">HU + EN</span>
+            <span class="word-card__term">
+              <span>Szeretlek</span>
+              <span>I love you</span>
+            </span>
+            <span class="word-card__hint">one sentence, two doors</span>
+            <span class="word-card__story">
+              Some words are bright enough to keep small. I like seeing the
+              same feeling stand in your language and in ours.
+            </span>
+          </button>
+
+          <button
+            class="word-card word-card--egg word-card--pair"
+            type="button"
+            aria-expanded="false"
+            data-word="我爱你 / 愛してる"
+          >
+            <span class="word-card__tag">ZH + JA</span>
+            <span class="word-card__term">
+              <span>我爱你</span>
+              <span>愛してる</span>
+            </span>
+            <span class="word-card__hint">same warmth, different shapes</span>
+            <span class="word-card__story">
+              Chinese says it directly. Japanese holds it like a quiet lamp.
+              Both feel like small translations of the same warmth.
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section class="memory-atlas" aria-labelledby="memory-title" data-reveal>
+        <div class="section-heading">
+          <p class="eyebrow">Little evidence</p>
+          <h2 id="memory-title">A tiny atlas of our proofs.</h2>
+        </div>
+
+        <div class="atlas-groups">
+          <article class="atlas-group">
+            <div class="atlas-group__copy">
+              <p class="eyebrow">Dream worlds</p>
+              <h3>Places we made from little wishes.</h3>
+              <p class="atlas-group__note">
+                Not escapes from the real days. More like small translations:
+                a sentence, a wish, a joke, becoming a place we can look at.
+              </p>
+            </div>
+            <div class="media-grid media-grid--dreams">
+              <figure class="media-card media-card--wide">
+                <img
+                  src="assets/memory/alice-rabbit.jpg"
+                  alt="An Alice in Borderland style rabbit scene"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>Alice rabbit</span>
+                  <small>
+                    From Alice in Borderland: an impossible city, softened by a
+                    small creature asking to be held.
+                  </small>
+                </figcaption>
+              </figure>
+              <figure class="media-card media-card--wide">
+                <img
+                  src="assets/memory/atlantis.jpg"
+                  alt="An Atlantis-like blue underwater world"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>Atlantis</span>
+                  <small>
+                    A blue world for the part of us that does not need to
+                    explain itself, only to rest somewhere beautiful.
+                  </small>
+                </figcaption>
+              </figure>
+              <figure class="media-card media-card--wide">
+                <img
+                  src="assets/memory/gravity-snake.jpg"
+                  alt="A Gravity Falls style snake scene"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>The snake you wanted</span>
+                  <small>
+                    You once wanted a snake, so our weird little town gave it a
+                    face, a mood, and a place between us.
+                  </small>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="atlas-group">
+            <div class="atlas-group__copy">
+              <p class="eyebrow">City proofs</p>
+              <h3>My hometown, your hometown, and the sky between.</h3>
+              <p class="atlas-group__note">
+                Beijing is not just a city here. It is where I come from.
+                Budapest is not just a faraway place. It is where you come
+                from. Tianjin holds the weather where these two maps first met.
+              </p>
+            </div>
+            <div class="media-grid">
+              <figure class="media-card media-card--wide">
+                <img
+                  src="assets/memory/beijing-proof.jpg"
+                  alt="A fantasy proof of Beijing at night"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>Beijing proof</span>
+                  <small>
+                    My hometown, reimagined as a night where you could stand
+                    beside me without needing the map to explain why.
+                  </small>
+                </figcaption>
+              </figure>
+              <figure class="media-card media-card--wide">
+                <img
+                  src="assets/memory/budapest-proof.jpg"
+                  alt="A fantasy proof of Budapest at sunset"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>Budapest proof</span>
+                  <small>
+                    Your hometown, glowing like a future invitation, not a
+                    promise forced too early, just a direction with light.
+                  </small>
+                </figcaption>
+              </figure>
+              <figure class="media-card media-card--tall">
+                <img
+                  src="assets/memory/tjnu-sky.jpg"
+                  alt="The evening sky over Tianjin Normal University"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>TJNU sky</span>
+                  <small>
+                    Not Beijing, not Budapest. Just Tianjin for one evening,
+                    with a sky that looked like it was trying to draw both of
+                    us at once.
+                  </small>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="atlas-group">
+            <div class="atlas-group__copy">
+              <p class="eyebrow">Blue Harbor night</p>
+              <h3>Dinner, moonlight, and a tiny myth.</h3>
+              <p class="atlas-group__note">
+                The night was not grand because it was expensive or planned. It
+                became memorable because ordinary food, light, and moon turned
+                into a shared symbol.
+              </p>
+            </div>
+            <div class="media-grid">
+              <figure class="media-card">
+                <img
+                  src="assets/memory/blue-harbor-dinner.jpg"
+                  alt="Mediterranean dinner at Blue Harbor"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>Mediterranean dinner</span>
+                  <small>
+                    A Mediterranean dinner in Beijing, carrying the feeling of
+                    travel without asking us to leave the table.
+                  </small>
+                </figcaption>
+              </figure>
+              <figure class="media-card">
+                <img
+                  src="assets/memory/cupid-moon.jpg"
+                  alt="Cupid statue aiming toward the moon"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>Cupid and the moon</span>
+                  <small>
+                    Cupid did not need to hit anything. The arrow, the moon,
+                    and the quiet black sky already made the joke tender.
+                  </small>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
+
+          <article class="atlas-group">
+            <div class="atlas-group__copy">
+              <p class="eyebrow">Names and echoes</p>
+              <h3>Things that started to answer back.</h3>
+              <p class="atlas-group__note">
+                Some things become real by being repeated: a name in a song, a
+                cat name spoken for the first time, a small proof from my side
+                of the room.
+              </p>
+            </div>
+            <div class="media-grid">
+              <figure class="media-card media-card--phone">
+                <img
+                  src="assets/memory/never-enough.jpg"
+                  alt="A music screen showing the song Valentina"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>Never Enough</span>
+                  <small>
+                    I heard your name inside a song, then remembered the KTV
+                    room where singing had already become one of our doors.
+                  </small>
+                </figcaption>
+              </figure>
+              <figure class="media-card">
+                <img
+                  src="assets/memory/first-panko.jpg"
+                  alt="Valentina holding PANKO for the first time"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>First PANKO</span>
+                  <small>
+                    The first time you said PANKO, it stopped being only a cat
+                    name. It became one of the ways this little home remembered
+                    you.
+                  </small>
+                </figcaption>
+              </figure>
+              <figure class="media-card">
+                <img
+                  src="assets/memory/korey-now.jpg"
+                  alt="A quiet side profile of Korey"
+                  loading="lazy"
+                />
+                <figcaption>
+                  <span>沉思的 Korey</span>
+                  <small>
+                    又开始装酷了 😎
+                  </small>
+                </figcaption>
+              </figure>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -220,6 +477,6 @@
       </footer>
     </main>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=20260615-soft-title"></script>
   </body>
 </html>

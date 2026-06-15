@@ -3,6 +3,33 @@ document.querySelectorAll(".word-grid .word-card").forEach((card, i) => {
   card.style.setProperty("--card-i", i);
 });
 
+// Index media cards separately so the memory atlas can ease in
+document.querySelectorAll(".memory-atlas .media-card").forEach((card, i) => {
+  card.style.setProperty("--media-i", i);
+});
+
+// Let the final title appear softly, letter by letter, without a hard cursor
+const resolvedTitle = document.querySelector(".hero-line--resolved");
+if (resolvedTitle) {
+  const fullTitle = resolvedTitle.textContent.replace(/\s+/g, " ").trim();
+  resolvedTitle.setAttribute("aria-label", fullTitle);
+
+  resolvedTitle.querySelectorAll(".hero-line__row").forEach((row, rowIndex) => {
+    const text = row.textContent;
+    row.setAttribute("aria-hidden", "true");
+    row.textContent = "";
+
+    Array.from(text).forEach((char, charIndex) => {
+      const letter = document.createElement("span");
+      letter.className = char === " " ? "hero-letter hero-letter--space" : "hero-letter";
+      letter.style.setProperty("--char-i", charIndex);
+      letter.style.setProperty("--row-i", rowIndex);
+      letter.textContent = char === " " ? "\u00a0" : char;
+      row.append(letter);
+    });
+  });
+}
+
 // Hero: trigger line-1 entrance on next frame (double rAF guarantees
 // the browser has committed initial state before the transition fires)
 requestAnimationFrame(() => {
@@ -16,6 +43,12 @@ const heroSwapDelay = 1800;
 window.setTimeout(() => {
   document.body.classList.add("hero-swapped");
 }, heroSwapDelay);
+
+// Resolve the old one-day greeting into the ongoing project name
+const heroResolveDelay = 3900;
+window.setTimeout(() => {
+  document.body.classList.add("hero-resolved");
+}, heroResolveDelay);
 
 // Reveal sections + their inner content as they scroll into view
 const revealTargets = document.querySelectorAll("[data-reveal]");
